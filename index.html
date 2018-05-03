@@ -1,39 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Housing Data</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/solar/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- Leaflet JS & CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+  <!-- d3 JavaScript -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="states_style.css">
+
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron" style="text-align: center">
-            <h1>US Housing Market</h1>
-            <p>Where are prices changing the fastest?</p>
-        </div>
+    <!-- <ul>
+        <li>
+          The last step in completing our map will be to add some interaction. Specifically, we will be adding mouse events using
+          the `onEachFeature` option.
+        </li>
+        <li>
+          `onEachFeature` will call the provided function on every feature--essentially looping through all of the neighborhoods.
+          This is useful because we want to bind some mouse events to all of our neighborhoods.
+        </li>
+        <li>
+          First we want to bind a pop-up so that, when we click on a neighborhood, we can see its name and which borough it belongs
+          to.
+        </li>
+        <li>
+          We also have access to a number of events we can subscribe to. We are going to set events to trigger on mouseover, mouseout,
+          and click. On mouseover and mouseout we want to change the opacity of the feature so that it has a nice highlight effect.
+        </li>
+        <li>
+          Our click function calls the `fitBounds()` function on our clicked feature.
+        </li>
+      </ul>
+     -->
+  <!-- map div -->
+  <div id="map"></div>
+  <script type="text/javascript" src="states_map.js"></script>
 
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Select your state to view current and historical housing market data</h2>
-                <div id="plot"></div>
-            </div>
-        </div>
+  <select id="selDataset" onchange="getData(this.value)">
+    <!-- <option value="emoji_char">Emoji Char</option>
+    <option value="emoji_id">Emoji ID</option>
+    <option value="emoji_name">Emoji Name</option>
+</select> -->
 
-        <div class="row">
-            <div class="col-md-12">
-                <h2><a href="/send">Add your zip code here:</a></h2>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 
 </html>
